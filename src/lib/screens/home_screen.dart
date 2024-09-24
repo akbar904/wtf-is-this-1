@@ -1,48 +1,49 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubits/counter_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Counter Value:',
-            ),
-            BlocBuilder<CounterCubit, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  '${state.counter}',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().increment(),
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-          SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: () => context.read<CounterCubit>().decrement(),
-            tooltip: 'Decrement',
-            child: Icon(Icons.remove),
-          ),
-        ],
-      ),
-    );
-  }
+	@override
+	Widget build(BuildContext context) {
+		return Scaffold(
+			appBar: AppBar(
+				title: Text('Home Screen'),
+			),
+			body: Center(
+				child: Column(
+					mainAxisAlignment: MainAxisAlignment.center,
+					children: <Widget>[
+						Text(
+							'Counter Value:',
+						),
+						BlocBuilder<CounterCubit, CounterState>(
+							builder: (context, state) {
+								return Text(
+									'${state.counter}',
+									style: Theme.of(context).textTheme.headlineMedium,
+								);
+							},
+						),
+					],
+				),
+			),
+			floatingActionButton: Column(
+				mainAxisAlignment: MainAxisAlignment.end,
+				children: <Widget>[
+					FloatingActionButton(
+						onPressed: () => context.read<CounterCubit>().increment(),
+						tooltip: 'Increment',
+						child: Icon(Icons.add),
+					),
+					SizedBox(height: 10),
+					FloatingActionButton(
+						onPressed: () => context.read<CounterCubit>().decrement(),
+						tooltip: 'Decrement',
+						child: Icon(Icons.remove),
+					),
+				],
+			),
+		);
+	}
 }
